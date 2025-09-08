@@ -1,0 +1,45 @@
+---
+import Feature from "./Feature.astro";
+
+const features = [
+  {
+    icon: "emoji_events",
+    title: "There are many variations",
+    description:
+      "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.",
+    variant: "info",
+  },
+  {
+    icon: "privacy_tip",
+    title: "Many desktop publishing",
+    description:
+      "Many desktop publishing packages and web page editors now use Lorem Ipsum as their.",
+    variant: "danger",
+  },
+  {
+    icon: "try",
+    title: "Contrary to popular belief",
+    description:
+      "It has survived not only five centuries, but also the leap into electronic typesetting.",
+    variant: "success",
+  },
+] as const;
+---
+
+<section class="container py-5">
+  <div class="row row-cols-2 row-cols-lg-2 row-cols-xl-3 g-5">
+    {
+      features.map((feature) => (
+        <div class="col d-flex">
+          <Feature
+            icon={feature.icon}
+            title={feature.title}
+            variant={feature.variant}
+          >
+            {feature.description}
+          </Feature>
+        </div>
+      ))
+    }
+  </div>
+</section>

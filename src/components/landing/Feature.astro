@@ -1,0 +1,29 @@
+---
+import GradientButton, {
+  type Props as GradientButtonProps,
+} from "./GradientButton.astro";
+
+export interface Props {
+  icon: string;
+  title: string;
+  variant: GradientButtonProps["variant"];
+}
+
+const { icon, title, variant } = Astro.props;
+---
+
+<article class="card card-body rounded-5 flex-row gap-4 align-items-start">
+  <div class="ratio ratio-1x1 w-50">
+    <GradientButton
+      variant={variant}
+      class="rounded-circle justify-content-center"
+      icon={icon}
+    />
+  </div>
+  <section>
+    <h3 class="card-title">{title}</h3>
+    <p class="card-text">
+      <slot />
+    </p>
+  </section>
+</article>

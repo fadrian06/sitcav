@@ -1,0 +1,50 @@
+---
+import GradientButton from "./GradientButton.astro";
+import Logo from "./Logo.astro";
+import PrimaryMenu from "./PrimaryMenu.astro";
+
+export interface Props {
+  id?: string;
+}
+
+const { id = undefined } = Astro.props;
+const offcanvasId = crypto.randomUUID();
+---
+
+<nav class="top-header sticky-top h-70 navbar navbar-expand-xl" id={id}>
+  <div class="container">
+    <Logo hideOnMobiles />
+
+    <button
+      data-bs-theme="dark"
+      class="navbar-toggler"
+      data-bs-toggle="offcanvas"
+      data-bs-target={`#${offcanvasId}`}
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id={offcanvasId}>
+      <header data-bs-theme="dark" class="offcanvas-header border-bottom h-70">
+        <Logo />
+        <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </header>
+      <div class="offcanvas-body p-0 justify-content-center">
+        <PrimaryMenu />
+      </div>
+    </div>
+    <GradientButton icon="account_circle">Login</GradientButton>
+  </div>
+</nav>
+
+<style>
+  .offcanvas-body {
+    overflow-y: scroll;
+  }
+
+  @media (min-width: var(--bs-breakpoint-xl)) {
+    .offcanvas-body {
+      overflow: auto;
+    }
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+import "owl.carousel/dist/assets/owl.carousel.min.css";
+
+import brand1Image from "../../images/clients/01.png";
+import brand2Image from "../../images/clients/02.png";
+import brand3Image from "../../images/clients/03.png";
+import brand4Image from "../../images/clients/04.png";
+import brand5Image from "../../images/clients/05.png";
+import brand6Image from "../../images/clients/06.png";
+import brand7Image from "../../images/clients/07.png";
+
+import Brand from "./Brand.astro";
+import SectionTitle from "./SectionTitle.astro";
+
+const brands = [
+  { image: brand1Image, imageAlt: "Brand 1" },
+  { image: brand2Image, imageAlt: "Brand 2" },
+  { image: brand3Image, imageAlt: "Brand 3" },
+  { image: brand4Image, imageAlt: "Brand 4" },
+  { image: brand5Image, imageAlt: "Brand 5" },
+  { image: brand6Image, imageAlt: "Brand 6" },
+  { image: brand7Image, imageAlt: "Brand 7" },
+];
+---
+
+<section class="container py-5">
+  <SectionTitle>Brands</SectionTitle>
+
+  <div class="clients-shops owl-carousel owl-theme">
+    {
+      brands.map((brand) => (
+        <Brand image={brand.image} imageAlt={brand.imageAlt} />
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import "jquery/dist/jquery.min";
+  import "owl.carousel";
+
+  $(".clients-shops").owlCarousel({
+    loop: true,
+    margin: 24,
+    autoplay: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      576: {
+        items: 2,
+      },
+      768: {
+        items: 3,
+      },
+      1024: {
+        items: 3,
+      },
+      1366: {
+        items: 4,
+      },
+      1400: {
+        items: 5,
+      },
+    },
+  });
+</script>

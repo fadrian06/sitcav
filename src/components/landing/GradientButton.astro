@@ -1,0 +1,151 @@
+---
+export interface Props {
+  size?: "sm" | "md" | "lg";
+  href?: string;
+  variant?:
+    | "primary"
+    | "success"
+    | "danger"
+    | "info"
+    | "warning"
+    | "voilet"
+    | "royal"
+    | "branding"
+    | "deep-blue";
+  icon?: string;
+  class?: string;
+  type?: "link" | "button" | "submit";
+  "data-bs-toggle"?: string;
+  "data-bs-target"?: string;
+}
+
+const {
+  variant = "primary",
+  icon = undefined,
+  href = "javascript:",
+  size = "md",
+  class: classes = "",
+  type: buttonType = "button",
+  "data-bs-toggle": dataToggle = undefined,
+  "data-bs-target": dataTarget = undefined,
+} = Astro.props;
+
+const Tag = buttonType === "link" ? "a" : "button";
+---
+
+<Tag
+  type={buttonType !== "link" ? buttonType : undefined}
+  style={classes.includes("rounded-circle") ? "aspect-ratio: 1 / 1" : undefined}
+  href={href}
+  class:list={[
+    "btn d-flex gap-2",
+    "btn-grd-" + variant,
+    {
+      "btn-sm": size === "sm",
+      "btn-lg": size === "lg",
+      "rounded-pill": !classes.includes("rounded-"),
+      "align-items-center": !classes.includes("align-items-"),
+    },
+    classes,
+  ]}
+  data-bs-toggle={dataToggle}
+  data-bs-target={dataTarget}
+>
+  {
+    icon && (
+      <i
+        class:list={[
+          "material-icons-outlined",
+          {
+            "fs-1": size === "lg",
+          },
+        ]}
+      >
+        {icon}
+      </i>
+    )
+  }
+  <slot />
+</Tag>
+
+<style>
+  .btn {
+    width: max-content;
+  }
+
+  .btn-grd-primary {
+    background: linear-gradient(310deg, #7928ca, #ff0080);
+
+    &:hover {
+      background: linear-gradient(310deg, #ff0080, #7928ca);
+    }
+  }
+
+  .btn-grd-success {
+    background: linear-gradient(310deg, #17ad37, #98ec2d);
+    color: black;
+
+    &:hover {
+      background: linear-gradient(310deg, #98ec2d, #17ad37);
+    }
+  }
+
+  .btn-grd-danger {
+    background: linear-gradient(310deg, #ee0979, #ff6a00);
+    color: black;
+
+    &:hover {
+      background: linear-gradient(310deg, #ff6a00, #ee0979);
+    }
+  }
+
+  .btn-grd-info {
+    background: linear-gradient(310deg, #00c6fb 0%, #005bea 100%);
+    color: black;
+
+    &:hover {
+      background: linear-gradient(310deg, #005bea 0%, #00c6fb 100%);
+    }
+  }
+
+  .btn-grd-warning {
+    background: linear-gradient(310deg, #f76e1e, #ffc400);
+
+    &:hover {
+      background: linear-gradient(310deg, #ffc400, #f76e1e);
+    }
+  }
+
+  .btn-grd-voilet {
+    background: linear-gradient(310deg, #3494e6, #ec6ead);
+
+    &:hover {
+      background: linear-gradient(310deg, #ec6ead, #3494e6);
+    }
+  }
+
+  .btn-grd-royal {
+    background: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+
+    &:hover {
+      background: linear-gradient(-20deg, #4e4376 0%, #2b5876 100%);
+    }
+  }
+
+  .btn-grd-branding {
+    background: linear-gradient(#2af598 0%, #009efd 100%);
+    color: black;
+
+    &:hover {
+      background: linear-gradient(#009efd 0%, #2af598 100%);
+    }
+  }
+
+  .btn-grd-deep-blue {
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+
+    &:hover {
+      background: linear-gradient(to right, #2575fc 0%, #6a11cb 100%);
+    }
+  }
+</style>

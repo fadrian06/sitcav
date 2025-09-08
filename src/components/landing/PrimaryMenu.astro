@@ -1,0 +1,197 @@
+---
+interface Link {
+  title: string;
+  href?: string;
+  icon?: string;
+  subLinks?: Link[];
+}
+
+const navLinks: Link[] = [
+  { title: "Home", href: "#home", icon: "home" },
+  { title: "About", href: "#About", icon: "info" },
+  { title: "Services", href: "#Services", icon: "work_outline" },
+  { title: "Portfolio", href: "#Portfolio", icon: "photo_camera" },
+  { title: "Team", href: "#Team", icon: "people_alt" },
+  { title: "Pricing", href: "#Pricing", icon: "euro" },
+  { title: "Contact", href: "#Contact", icon: "call" },
+  /*{
+    title: "Pages",
+    icon: "layers",
+    subLinks: [
+      { title: "Email", href: "javascript:", icon: "email" },
+      { title: "Chat Box", href: "javascript:", icon: "chat" },
+      { title: "File Manager", href: "javascript:", icon: "folder" },
+      { title: "Todo", href: "javascript:", icon: "task" },
+      { title: "Invoice", href: "javascript:", icon: "description" },
+      {
+        title: "Pages",
+        icon: "layers",
+        subLinks: [
+          {
+            title: "Error",
+            subLinks: [
+              { title: "403 Error", href: "javascript:" },
+              { title: "404 Error", href: "javascript:" },
+              { title: "505 Error", href: "javascript:" },
+              { title: "Coming Soon", href: "javascript:" },
+              { title: "Blank Page", href: "javascript:" },
+            ],
+          },
+          { title: "User Profile", href: "javascript:", icon: "person" },
+          { title: "Timeline", href: "javascript:", icon: "timeline" },
+          { title: "FAQ", href: "javascript:", icon: "help" },
+          { title: "Pricing", href: "javascript:", icon: "euro_symbol" },
+        ],
+      },
+    ],
+  },*/
+];
+---
+
+<div class="primary-menu">
+  <ul class="navbar-nav align-items-center gap-xl-2">
+    {
+      navLinks.map((link) => {
+        if (link.subLinks) {
+          return (
+            <li class="nav-item w-100 dropdown">
+              <a
+                class="nav-link p-3 p-xl-2 dropdown-toggle d-flex align-items-center gap-2"
+                href="javascript:"
+                data-bs-toggle="dropdown"
+              >
+                <i class="material-icons-outlined">{link.icon}</i>
+                <span class="flex-grow-1">{link.title}</span>
+              </a>
+              <ul class="dropdown-menu">
+                {link.subLinks.map((link) => {
+                  if (link.subLinks) {
+                    return (
+                      <li class="nav-item dropend">
+                        <a
+                          class="dropdown-item dropdown-toggle d-flex align-items-center gap-2 p-3 p-xl-2"
+                          href="javascript:"
+                        >
+                          <i class="material-icons-outlined">{link.icon}</i>
+                          <span class="flex-grow-1">{link.title}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          {link.subLinks.map((link) => {
+                            if (link.subLinks) {
+                              return (
+                                <li class="nav-item dropend">
+                                  <a
+                                    class="dropdown-item dropdown-toggle d-flex align-items-center gap-2 p-3 p-xl-2"
+                                    href="javascript:"
+                                  >
+                                    <i class="material-icons-outlined">
+                                      navigate_next
+                                    </i>
+                                    <span class="flex-grow-1">
+                                      {link.title}
+                                    </span>
+                                  </a>
+                                  <ul class="dropdown-menu">
+                                    {link.subLinks.map((page) => (
+                                      <li>
+                                        <a
+                                          class="dropdown-item d-flex align-items-center gap-2 p-3 p-xl-2"
+                                          href={page.href}
+                                        >
+                                          <i class="material-icons-outlined">
+                                            navigate_next
+                                          </i>
+                                          {page.title}
+                                        </a>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </li>
+                              );
+                            }
+
+                            return (
+                              <li>
+                                <a
+                                  class="dropdown-item d-flex align-items-center gap-2 p-3 p-xl-2"
+                                  href={link.href}
+                                >
+                                  <i class="material-icons-outlined">
+                                    navigate_next
+                                  </i>
+                                  {link.title}
+                                </a>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </li>
+                    );
+                  }
+
+                  return (
+                    <li>
+                      <a
+                        class="dropdown-item d-flex align-items-center gap-2 p-3 p-xl-2"
+                        href={link.href}
+                      >
+                        <i class="material-icons-outlined">{link.icon}</i>
+                        {link.title}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+          );
+        }
+
+        return (
+          <li class="nav-item w-100">
+            <a
+              class="nav-link p-3 p-xl-2 d-flex align-items-center gap-2"
+              href={link.href}
+            >
+              <i class="material-icons-outlined">{link.icon}</i>
+              {link.title}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>
+
+<style>
+  @media screen and (min-width: 1200px) {
+    .primary-menu .navbar-nav .dropdown:hover > .dropdown-menu,
+    .primary-menu .navbar-nav .dropend:hover > .dropdown-menu {
+      display: block;
+    }
+
+    .primary-menu .navbar-nav .dropend:hover > .dropdown-menu {
+      position: absolute;
+      top: 0;
+      right: 100%;
+    }
+  }
+
+  .dropdown-menu {
+    border-radius: 1rem;
+    border: 0;
+    animation: 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1
+      animdropdown;
+  }
+
+  @keyframes animdropdown {
+    from {
+      transform: translate3d(0, 6px, 0);
+      opacity: 0;
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+</style>

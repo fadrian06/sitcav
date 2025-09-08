@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import favicon from "../../images/favicon.png";
+
+export interface Props {
+  hideOnMobiles?: boolean;
+}
+
+const { hideOnMobiles = false } = Astro.props;
+---
+
+<figure
+  class:list={[
+    "m-0 align-items-center gap-2",
+    {
+      "d-none d-xl-flex": hideOnMobiles,
+      "d-flex": !hideOnMobiles,
+    },
+  ]}
+>
+  <Image src={favicon} alt="Logo de SITCAV" class="logo-img" height={45} />
+  <figcaption class="fs-1">SITCAV</figcaption>
+</figure>

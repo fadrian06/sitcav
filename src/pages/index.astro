@@ -1,16 +1,75 @@
 ---
+import "@fontsource-variable/noto-sans";
+import "material-icons/iconfont/material-icons.css";
+import "bootstrap-icons/font/bootstrap-icons.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
+import "../styles/pace.min.css";
+import "../styles/bootstrap-extended.css";
+import "../styles/main.css";
+import "../styles/semi-dark.css";
+import "../styles/blue-theme.css";
+
+import favicon from "../images/favicon.png";
+
+import TopHeader from "../components/landing/TopHeader.astro";
+import Banner from "../components/landing/Banner.astro";
+import Features from "../components/landing/Features.astro";
+import AboutUs from "../components/landing/AboutUs.astro";
+import Brands from "../components/landing/Brands.astro";
+import Services from "../components/landing/Services.astro";
+import CallToAction from "../components/landing/CallToAction.astro";
+import Portfolio from "../components/landing/Portfolio.astro";
+import Team from "../components/landing/Team.astro";
+import PricingTable from "../components/landing/PricingTable.astro";
+import ContactForm from "../components/landing/ContactForm.astro";
+import Footer from "../components/landing/Footer.astro";
+import BackToTopButton from "../components/landing/BackToTopButton.astro";
+import Switcher from "../components/landing/Switcher.astro";
+
+const headerId = crypto.randomUUID();
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html data-bs-theme="blue-theme">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>
+      SITCAV | Sistema Integral de Tecnologia, Créditos y Análisis de Ventas
+    </title>
+
+    <link rel="icon" href={favicon.src} />
+
+    <!-- loader-->
+    <script is:inline src="assets/js/pace.min.js"></script>
+  </head>
+  <body>
+    <TopHeader id={headerId} />
+
+    <main data-bs-spy="scroll" data-bs-target={`#${headerId}`}>
+      <Banner />
+      <Features />
+      <AboutUs />
+      <Brands />
+      <Services />
+      <CallToAction />
+      <Portfolio />
+      <Team />
+      <PricingTable />
+      <ContactForm />
+    </main>
+
+    <Footer />
+    <BackToTopButton />
+    <Switcher />
+
+    <script src="bootstrap/dist/js/bootstrap.bundle.min"></script>
+  </body>
 </html>
+
+<style is:global>
+  body {
+    font-family: "Noto Sans Variable", sans-serif;
+  }
+</style>

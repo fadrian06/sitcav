@@ -1,0 +1,76 @@
+---
+import TeamMember, { type Props as TeamMemberProps } from "./TeamMember.astro";
+
+import avatar1 from "../../images/avatars/02.png";
+import avatar2 from "../../images/avatars/09.png";
+import avatar3 from "../../images/avatars/08.png";
+import avatar4 from "../../images/avatars/06.png";
+import SectionTitle from "./SectionTitle.astro";
+
+const members: TeamMemberProps[] = [
+  {
+    name: "Sarah Jhonson",
+    role: "UI Developer",
+    description: "Explicabo voluptatem mollitia et repellat qui dolorum quasi",
+    avatar: avatar1,
+    socialLinks: {
+      linkedin: "javascript:",
+      facebook: "javascript:",
+      youtube: "javascript:",
+      twitter: "javascript:",
+    },
+  },
+  {
+    name: "Pauline Roman",
+    role: "Graphic Designer",
+    description: "Explicabo voluptatem mollitia et repellat qui dolorum quasi",
+    avatar: avatar2,
+    socialLinks: {
+      linkedin: "javascript:",
+      facebook: "javascript:",
+      youtube: "javascript:",
+      twitter: "javascript:",
+    },
+  },
+  {
+    name: "David Buckley",
+    role: "Android Developer",
+    description: "Explicabo voluptatem mollitia et repellat qui dolorum quasi",
+    avatar: avatar3,
+    socialLinks: {
+      linkedin: "javascript:",
+      facebook: "javascript:",
+      youtube: "javascript:",
+      twitter: "javascript:",
+    },
+  },
+  {
+    name: "Amanda Jepson",
+    role: "Product Manager",
+    description: "Explicabo voluptatem mollitia et repellat qui dolorum quasi",
+    avatar: avatar4,
+    socialLinks: {
+      linkedin: "javascript:",
+      facebook: "javascript:",
+      youtube: "javascript:",
+      twitter: "javascript:",
+    },
+  },
+];
+---
+
+<section class="py-5 bg-section" id="Team">
+  <div class="container">
+    <SectionTitle>Team</SectionTitle>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-2 g-5">
+      {
+        members.map((member) => (
+          <div class="col d-flex">
+            <TeamMember {...member} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

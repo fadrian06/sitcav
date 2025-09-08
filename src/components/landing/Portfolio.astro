@@ -1,0 +1,70 @@
+---
+import "glightbox/dist/css/glightbox.min.css";
+
+const images = [
+  {
+    large: "assets/images/lightbox/img/large/gm1.jpg",
+    small: "assets/images/lightbox/img/small/gm1.jpg",
+    alt: "image",
+    bgClass: "bg-grd-branding",
+  },
+  {
+    large: "assets/images/lightbox/img/large/gm2.jpg",
+    small: "assets/images/lightbox/img/small/gm2.jpg",
+    alt: "image",
+    bgClass: "bg-grd-danger",
+  },
+  {
+    large: "assets/images/lightbox/img/large/gm3.jpg",
+    small: "assets/images/lightbox/img/small/gm3.jpg",
+    alt: "image",
+    bgClass: "bg-grd-info",
+  },
+  {
+    large: "assets/images/lightbox/img/large/gm4.jpg",
+    small: "assets/images/lightbox/img/small/gm4.jpg",
+    alt: "image",
+    bgClass: "bg-grd-warning",
+  },
+  {
+    large: "assets/images/lightbox/img/large/gm5.jpg",
+    small: "assets/images/lightbox/img/small/gm5.jpg",
+    alt: "image",
+    bgClass: "bg-grd-success",
+  },
+  {
+    large: "assets/images/lightbox/img/large/gm6.jpg",
+    small: "assets/images/lightbox/img/small/gm6.jpg",
+    alt: "image",
+    bgClass: "bg-grd-voilet",
+  },
+];
+---
+
+<section class="py-5 container" id="Portfolio">
+  <header class="section-title text-center">
+    <h1>Portfolio</h1>
+  </header>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+    {
+      images.map((image) => (
+        <div class="col">
+          <a href={image.large} class="glightbox">
+            <img
+              src={image.small}
+              class:list={["img-fluid img-thumbnail rounded-5", image.bgClass]}
+              alt={image.alt}
+            />
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import GLightbox from "glightbox";
+
+  GLightbox({});
+</script>

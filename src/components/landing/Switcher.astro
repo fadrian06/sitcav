@@ -1,0 +1,91 @@
+---
+import GradientButton from "./GradientButton.astro";
+
+const offcanvasId = crypto.randomUUID();
+
+const themes = [
+  {
+    name: "blue-theme",
+    label: "Blue",
+    id: crypto.randomUUID(),
+    icon: "contactless",
+  },
+  {
+    name: "semi-dark",
+    label: "Semi Dark",
+    id: crypto.randomUUID(),
+    icon: "contrast",
+  },
+];
+---
+
+<GradientButton
+  variant="danger"
+  class="btn-switcher position-fixed top-50 end-0"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target={`#${offcanvasId}`}
+  icon="tune"
+>
+  Customize
+</GradientButton>
+
+<div
+  class="offcanvas offcanvas-end"
+  data-bs-scroll="true"
+  tabindex="-1"
+  id={offcanvasId}
+>
+  <header class="offcanvas-header border-bottom h-70" data-bs-theme="dark">
+    <div>
+      <h3 class="offcanvas-title">Theme Customizer</h3>
+      <p class="m-0">Customize your theme</p>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas">
+    </button>
+  </header>
+  <div class="offcanvas-body">
+    <p>Theme variation</p>
+
+    <div class="row row-cols-1 row-cols-xl-2 g-4">
+      {
+        themes.map((theme, index) => (
+          <div class="col">
+            <input
+              type="radio"
+              class="btn-check"
+              name="theme-options"
+              data-theme-name={theme.name}
+              id={theme.id}
+              checked={index === 0}
+            />
+            <label
+              class="btn btn-outline-secondary d-flex flex-column align-items-center justify-content-center p-4"
+              for={theme.id}
+            >
+              <span class="material-icons-outlined">{theme.icon}</span>
+              <span>{theme.label}</span>
+            </label>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('input[name="theme-options"]').forEach(($input) => {
+    $input.addEventListener("change", () => {
+      const themeName = $input.getAttribute("data-theme-name") || "light";
+
+      document.documentElement.setAttribute("data-bs-theme", themeName);
+    });
+  });
+</script>
+
+<style is:global>
+  .btn-switcher {
+    rotate: 90deg;
+    margin-right: -40px;
+  }
+</style>

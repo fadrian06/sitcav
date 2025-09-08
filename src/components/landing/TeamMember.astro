@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import GradientButton from "./GradientButton.astro";
+import BootstrapIcon from "./BootstrapIcon.astro";
+
+export interface Props {
+  avatar: ImageMetadata;
+  name: string;
+  role: string;
+  description: string;
+  socialLinks: {
+    linkedin: string;
+    facebook: string;
+    youtube: string;
+    twitter: string;
+  };
+}
+
+const { avatar, name, role, description, socialLinks } = Astro.props;
+---
+
+<article
+  class="card card-body p-5 rounded-5 flex-lg-row align-items-center align-items-lg-start gap-4 text-center text-lg-start"
+>
+  <div class="radio radio-1x1">
+    <Image
+      src={avatar}
+      width="120"
+      height="120"
+      class="img-fluid img-thumbnail rounded-circle bg-grd-warning"
+      alt={`Avatar de ${name}`}
+    />
+  </div>
+  <div>
+    <h3>{name}</h3>
+    <p class="lead">{role}</p>
+    <p>{description}</p>
+    <div
+      class="d-flex justify-content-center justify-content-lg-start align-items-center gap-2"
+    >
+      <GradientButton
+        href={socialLinks.linkedin}
+        variant="deep-blue"
+        class="rounded-circle"
+      >
+        <i class="bi bi-linkedin"></i>
+      </GradientButton>
+
+      <GradientButton
+        href={socialLinks.facebook}
+        variant="info"
+        class="rounded-circle"
+      >
+        <i class="bi bi-facebook"></i>
+      </GradientButton>
+
+      <GradientButton
+        href={socialLinks.youtube}
+        variant="danger"
+        class="rounded-circle"
+      >
+        <i class="bi bi-youtube"></i>
+      </GradientButton>
+
+      <GradientButton
+        href={socialLinks.twitter}
+        variant="voilet"
+        class="rounded-circle"
+      >
+        <i class="bi bi-twitter-x"></i>
+      </GradientButton>
+    </div>
+  </div>
+</article>

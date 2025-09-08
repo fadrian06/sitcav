@@ -1,0 +1,15 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+export interface Props {
+  image: ImageMetadata;
+  imageAlt?: string;
+}
+
+const { image, imageAlt = "" } = Astro.props;
+---
+
+<picture class="card card-body rounded-5">
+  <Image src={image} class="img-fluid" alt={imageAlt} />
+</picture>

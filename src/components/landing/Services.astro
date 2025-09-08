@@ -1,0 +1,62 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+import Service, { type Props as ServiceProps } from "./Service.astro";
+
+const services: ServiceProps[] = [
+  {
+    icon: "favorite_border",
+    title: "Asperiores Commodit",
+    description:
+      "Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.",
+    variant: "primary",
+  },
+  {
+    icon: "card_membership",
+    title: "Velit Doloremque",
+    description:
+      "Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.",
+    variant: "danger",
+  },
+  {
+    icon: "language",
+    title: "All Variations",
+    description:
+      "Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.",
+    variant: "warning",
+  },
+  {
+    icon: "account_balance",
+    title: "Nesciunt Mete",
+    description:
+      "Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.",
+    variant: "branding",
+  },
+  {
+    icon: "history",
+    title: "Ledo Markt",
+    description:
+      "Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.",
+    variant: "success",
+  },
+  {
+    icon: "leaderboard",
+    title: "Eosle Commodi",
+    description:
+      "Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.",
+    variant: "deep-blue",
+  },
+];
+---
+
+<section class="py-5 container" id="Services">
+  <SectionTitle>Services</SectionTitle>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-5">
+    {
+      services.map((service) => (
+        <div class="col d-flex">
+          <Service {...service} />
+        </div>
+      ))
+    }
+  </div>
+</section>

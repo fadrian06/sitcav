@@ -1,0 +1,59 @@
+/*
+Template Name: Maxton Landing Page
+Author: codervent
+Email: codervent@gmail.com
+File: main.scss
+
+Table of Index 
+
+  --aligns
+  --utilities
+  --alerts
+
+*/
+
+/* aligns */
+.bg-section {
+  background-color: #f8f9fa;
+}
+
+/* utilities */
+.h-70 {
+  height: 70px;
+}
+
+/* alerts */
+.alert-border-primary {
+  border: 1px solid var(--bs-gray-400);
+  border-left: 5px solid #008cff;
+}
+
+.alert-border-secondary {
+  border: 1px solid var(--bs-gray-400);
+  border-left: 5px solid #6c757d;
+}
+
+.alert-border-success {
+  border: 1px solid var(--bs-gray-400);
+  border-left: 5px solid #02c27a;
+}
+
+.alert-border-danger {
+  border: 1px solid var(--bs-gray-400);
+  border-left: 5px solid #fc185a;
+}
+
+.alert-border-warning {
+  border: 1px solid var(--bs-gray-400);
+  border-left: 5px solid #fbb513;
+}
+
+.alert-border-info {
+  border: 1px solid var(--bs-gray-400);
+  border-left: 5px solid #0dcaf0;
+}
+
+.alert-border-dark {
+  border: 1px solid var(--bs-gray-400);
+  border-left: 5px solid #212529;
+}

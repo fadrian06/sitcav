@@ -1,0 +1,27 @@
+---
+import GradientButton from "./GradientButton.astro";
+import banner from "../../images/banners/01.png";
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+---
+
+<section class="container py-5" id="home">
+  <div class="row row-cols-1 row-cols-xl-2 align-items-center g-5">
+    <article class="col order-last order-xl-first">
+      <h1>Improved Business Solutions for Your Organization.</h1>
+      <p class="lead">
+        We are a group of talented designers who specialize in developing
+        websites using Bootstrap.
+      </p>
+      <div class="d-flex gap-2">
+        <GradientButton icon="speed" size="lg">Get started</GradientButton>
+        <Button variant="light" size="lg" icon="play_circle_outline">
+          Watch video
+        </Button>
+      </div>
+    </article>
+    <picture class="col">
+      <Image src={banner} class="img-fluid" alt="Captura de SITCAV" />
+    </picture>
+  </div>
+</section>

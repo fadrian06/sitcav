@@ -1,0 +1,74 @@
+---
+import PricingCard, {
+  type Props as PricingCardProps,
+} from "./PricingCard.astro";
+import SectionTitle from "./SectionTitle.astro";
+
+const pricings: PricingCardProps[] = [
+  {
+    name: "Basic Plan",
+    price: 499,
+    currency: "$",
+    period: "month",
+    features: [
+      { name: "Bandwith", value: "50 GB" },
+      { name: "Add-On Domains", value: "10" },
+      { name: "SSD Storage", value: "250 GB" },
+      { name: "Mail Adresses", value: "25" },
+      { name: "Support", value: "Only Mail" },
+    ],
+    buttonText: "Buy Now",
+    buttonVariant: "info",
+    borderVariant: "primary",
+    textVariant: "primary",
+  },
+  {
+    name: "Business Plan",
+    price: 999,
+    currency: "$",
+    period: "month",
+    features: [
+      { name: "Bandwith", value: "50 GB" },
+      { name: "Add-On Domains", value: "10" },
+      { name: "SSD Storage", value: "250 GB" },
+      { name: "Mail Adresses", value: "25" },
+      { name: "Support", value: "Only Mail" },
+    ],
+    buttonText: "Buy Now",
+    buttonVariant: "success",
+    borderVariant: "success",
+    textVariant: "success",
+  },
+  {
+    name: "Developer Plan",
+    price: 799,
+    currency: "$",
+    period: "month",
+    features: [
+      { name: "Bandwith", value: "50 GB" },
+      { name: "Add-On Domains", value: "10" },
+      { name: "SSD Storage", value: "250 GB" },
+      { name: "Mail Adresses", value: "25" },
+      { name: "Support", value: "Only Mail" },
+    ],
+    buttonText: "Buy Now",
+    buttonVariant: "danger",
+    borderVariant: "danger",
+    textVariant: "danger",
+  },
+];
+---
+
+<section class="py-5 container" id="Pricing">
+  <SectionTitle>Pricing</SectionTitle>
+
+  <div class="row row-cols-1 row-cols-xl-3 g-5">
+    {
+      pricings.map((pricing) => (
+        <div class="col">
+          <PricingCard {...pricing} />
+        </div>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+import GradientButton from "./GradientButton.astro";
+import banner from "../../images/banners/widget-1.png";
+import { Image } from "astro:assets";
+import SectionTitle from "./SectionTitle.astro";
+
+const items = [
+  "At vero eos et accusamus et iusto odio dignissimos ducimus blanditiis",
+  "On the other hand, we denounce with righteous indignation",
+  "In a free hour, when our power of choice is untrammelled",
+  `
+    Nor again is there anyone who loves or pursues or desires to obtain pain
+    of itself, because it is pain, but because occasionally circumstances occur
+    in which toil and pain can procure him some great pleasure
+  `,
+];
+---
+
+<section class="py-5 bg-section" id="About">
+  <div class="container">
+    <SectionTitle>About us</SectionTitle>
+    <div class="row row-cols-1 row-cols-xl-2 g-5">
+      <div class="col">
+        <h2 class="fs-6 text-uppercase">Who We Are</h2>
+        <h3>Maximizing Potential through Innovative Strategies.</h3>
+        <p>
+          Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+          impedit quo minus id quod maxime placeat facere possimus, omnis
+          voluptas assumenda Quis autem vel eum iure reprehenderit qui in ea
+          voluptate velit esse quam nihil
+        </p>
+        {
+          items.map((item) => (
+            <p class="d-flex gap-4">
+              <i class="material-icons-outlined">check_circle</i>
+              {item}
+            </p>
+          ))
+        }
+
+        <GradientButton icon="east" size="lg">Read more</GradientButton>
+      </div>
+      <picture class="col">
+        <Image
+          src={banner}
+          class="img-fluid img-thumbnail rounded-5 bg-grd-warning"
+          alt="Captura de SITCAV"
+        />
+      </picture>
+    </div>
+  </div>
+</section>

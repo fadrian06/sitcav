@@ -1,0 +1,129 @@
+---
+import Logo from "./Logo.astro";
+import { Image } from "astro:assets";
+
+import playStore from "../../images/google-play-store.png";
+import appleStore from "../../images/apple-store.png";
+import GradientButton from "./GradientButton.astro";
+
+const usefulLinks = [
+  { name: "Home", href: "javascript:" },
+  { name: "About us", href: "javascript:" },
+  { name: "Services", href: "javascript:" },
+  { name: "Portfolio", href: "javascript:" },
+  { name: "Contact", href: "javascript:" },
+  { name: "Terms of service", href: "javascript:" },
+  { name: "Privacy policy", href: "javascript:" },
+];
+
+const services = [
+  { name: "Product Development", href: "javascript:" },
+  { name: "Graphic Design", href: "javascript:" },
+  { name: "Human resourse", href: "javascript:" },
+  { name: "Software Developer", href: "javascript:" },
+  { name: "Web Design", href: "javascript:" },
+  { name: "CRM Management", href: "javascript:" },
+  { name: "eCommerce website", href: "javascript:" },
+];
+
+const socialLinks = [
+  { icon: "bi-linkedin", href: "javascript:", variant: "deep-blue" },
+  { icon: "bi-facebook", href: "javascript:", variant: "info" },
+  { icon: "bi-youtube", href: "javascript:", variant: "danger" },
+  { icon: "bi-twitter-x", href: "javascript:", variant: "voilet" },
+] as const;
+---
+
+<section class="page-footer py-5">
+  <div class="container">
+    <div class="row g-5">
+      <section class="col-12 col-xl-4">
+        <Logo />
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur. Explicabo voluptatem mollitia et
+          repellat qui dolorum quasi.
+        </p>
+        <p>
+          <strong>Address: </strong>
+          B895 Sudan Street, United Kingdom, Pin 569874
+        </p>
+        <p>
+          <strong>Phone: </strong>
+          +01-854-256-49
+        </p>
+        <p>
+          <strong>Email: </strong>
+          info@example.com
+        </p>
+        <div class="d-flex align-items-center gap-2">
+          <a href="javascript:">
+            <Image src={playStore} alt="PlayStore" width="160" />
+          </a>
+          <a href="javascript:">
+            <Image src={appleStore} alt="AppStore" width="160" />
+          </a>
+        </div>
+      </section>
+      <section class="col-12 col-xl-2">
+        <h3 class="fs-4">Useful links</h3>
+        <ul class="nav">
+          {
+            usefulLinks.map((link) => (
+              <li class="nav-item">
+                <a class="nav-link" href={link.href}>
+                  {link.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+      <div class="col-12 col-xl-2">
+        <h3 class="fs-4">Our services</h3>
+        <ul class="nav">
+          {
+            services.map((service) => (
+              <li class="nav-item">
+                <a class="nav-link" href={service.href}>
+                  {service.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="col-12 col-xl">
+        <h3 class="fs-4">Our newsletter</h3>
+        <p>
+          Join our newsletter to get the most recent information about our goods
+          and services!
+        </p>
+        <form class="input-group">
+          <input class="form-control rounded-0" />
+          <GradientButton type="submit" class="rounded-0">
+            Subscribe
+          </GradientButton>
+        </form>
+        <h4 class="mt-4 fs-5">Follow us</h4>
+        <div class="d-flex align-items-center gap-2">
+          {
+            socialLinks.map((link) => (
+              <GradientButton
+                href={link.href}
+                class="rounded-circle text-white"
+                variant={link.variant}
+              >
+                <i class:list={["fs-5 bi", link.icon]} />
+              </GradientButton>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-5 container text-center border-top">
+  <p class="mb-0">© 2024. www.codervent.com. | All rights reserved.</p>
+</footer>

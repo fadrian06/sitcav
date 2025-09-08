@@ -1,0 +1,79 @@
+---
+import GradientButton, {
+  type Props as GradientButtonProps,
+} from "./GradientButton.astro";
+
+type BootstrapColor =
+  | "primary"
+  | "secondary"
+  | "success"
+  | "danger"
+  | "warning"
+  | "info"
+  | "light"
+  | "dark";
+
+interface Feature {
+  name: string;
+  value: string;
+}
+
+export interface Props {
+  name: string;
+  price: number;
+  currency: string;
+  period: string;
+  features: Feature[];
+  buttonText: string;
+  buttonVariant: GradientButtonProps["variant"];
+  borderVariant: BootstrapColor;
+  textVariant: BootstrapColor;
+}
+
+const {
+  name,
+  price,
+  currency,
+  period,
+  features,
+  buttonText,
+  buttonVariant,
+  borderVariant,
+  textVariant,
+}: Props = Astro.props;
+---
+
+<article
+  class:list={[
+    "card border-5 border-start-0 border-end-0 border-bottom-0 rounded-5",
+    `border-${borderVariant}`,
+  ]}
+>
+  <header class="card-header p-4">
+    <h3 class="card-title m-0">{name}</h3>
+  </header>
+  <div class="card-body p-4 d-flex flex-column gap-4">
+    {
+      features.map((feature) => (
+        <div class="d-flex gap-5 justify-content-between">
+          <strong>{feature.name}</strong>
+          <span>{feature.value}</span>
+        </div>
+      ))
+    }
+    <div class:list={["text-center", `text-${textVariant}`]}>
+      <span>{currency}</span>
+      <span class="fs-1">{price}</span>
+      <span>/{period}</span>
+    </div>
+  </div>
+  <footer class="card-footer p-4">
+    <GradientButton
+      size="lg"
+      variant={buttonVariant}
+      class="w-100 justify-content-center"
+    >
+      {buttonText}
+    </GradientButton>
+  </footer>
+</article>

@@ -1,0 +1,96 @@
+---
+import GradientButton from "./GradientButton.astro";
+import SectionTitle from "./SectionTitle.astro";
+
+const contactItems = [
+  {
+    name: "Address",
+    icon: "house",
+    info: "B895 Sudan Street, United Kingdom, Pin 569874",
+    bgClass: "bg-info text-info",
+  },
+  {
+    name: "Phone",
+    icon: "call",
+    info: "+01-854-256-49",
+    bgClass: "bg-danger text-danger",
+  },
+  {
+    name: "Email",
+    icon: "email",
+    info: "info@example.com",
+    bgClass: "bg-warning text-warning",
+  },
+];
+---
+
+<section class="py-5 bg-section" id="Contact">
+  <div class="container">
+    <SectionTitle>Contact</SectionTitle>
+
+    <div class="row g-5">
+      <section class="col-12 col-xl-5 d-flex flex-column gap-5">
+        <article class="card card-body gap-4 rounded-5 p-4">
+          {
+            contactItems.map((item) => (
+              <div class="d-flex align-items-center gap-4">
+                <div
+                  class:list={[
+                    "p-2 bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center",
+                    item.bgClass,
+                  ]}
+                >
+                  <i class="material-icons-outlined fs-1">{item.icon}</i>
+                </div>
+                <div>
+                  <h3>{item.name}</h3>
+                  <p class="mb-0">{item.info}</p>
+                </div>
+              </div>
+            ))
+          }
+        </article>
+
+        <article class="card card-body p-0 rounded-5 overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9584993.017565502!2d-15.007252921431434!3d54.08994727271037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x25a3b1142c791a9%3A0xc4f8a0433288257a!2sUnited%20Kingdom!5e0!3m2!1sen!2sin!4v1721760880045!5m2!1sen!2sin"
+            height="255"
+          >
+          </iframe>
+        </article>
+      </section>
+      <section class="col-12 col-xl">
+        <form class="card card-body p-4 rounded-5 h-100">
+          <div class="row g-4">
+            <div class="col-12 col-lg-6">
+              <label class="form-label">Your name</label>
+              <input class="form-control" />
+            </div>
+            <div class="col-12 col-lg-6">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" />
+            </div>
+            <div class="col-12 col-lg-12">
+              <label class="form-label">Subject</label>
+              <input class="form-control" />
+            </div>
+            <div class="col-12 col-lg-12">
+              <label class="form-label">Message</label>
+              <textarea class="form-control" rows="10"></textarea>
+            </div>
+            <div class="col-12 col-lg-12">
+              <GradientButton
+                type="submit"
+                variant="primary"
+                class="w-100 justify-content-center"
+                size="lg"
+              >
+                Submit
+              </GradientButton>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</section>
