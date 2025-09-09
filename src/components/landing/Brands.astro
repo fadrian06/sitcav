@@ -1,6 +1,4 @@
 ---
-import "owl.carousel/dist/assets/owl.carousel.min.css";
-
 import brand1Image from "../../images/clients/01.png";
 import brand2Image from "../../images/clients/02.png";
 import brand3Image from "../../images/clients/03.png";
@@ -23,6 +21,11 @@ const brands = [
 ];
 ---
 
+<link
+  rel="stylesheet"
+  href="./assets/plugins/OwlCarousel/css/owl.carousel.min.css"
+/>
+
 <section class="container py-5">
   <SectionTitle>Brands</SectionTitle>
 
@@ -35,10 +38,14 @@ const brands = [
   </div>
 </section>
 
-<script>
-  import "jquery/dist/jquery.min";
-  import "owl.carousel";
+<script src="./assets/js/jquery.min.js" is:inline></script>
+<script src="./assets/plugins/OwlCarousel/js/owl.carousel.min.js" is:inline
+></script>
+<script
+  src="./assets/plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js"
+  is:inline></script>
 
+<script>
   $(".clients-shops").owlCarousel({
     loop: true,
     margin: 24,
